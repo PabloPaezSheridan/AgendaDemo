@@ -1,4 +1,6 @@
 ﻿using AgendaDemo.Entities;
+using AgendaDemo.Helpers;
+using AgendaDemo.Models;
 
 namespace AgendaDemo.Repository
 {
@@ -10,6 +12,7 @@ namespace AgendaDemo.Repository
             {
                 Id = 0,
                 UserName = "First",
+                Password = "password"
             }
         };
 
@@ -26,6 +29,11 @@ namespace AgendaDemo.Repository
         public void Add(User user)
         {
             FakeUsers.Add(user);
+        }
+
+        public User? ValidateUser(AuthenticationRequestBody dto)
+        {
+            return FakeUsers.SingleOrDefault(u => u.UserName == dto.UserName && u.Password == Security.CreateSHA512(dto.Password));
         }
     }
 }

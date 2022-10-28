@@ -1,4 +1,5 @@
 ﻿using AgendaDemo.Entities;
+using AgendaDemo.Models;
 
 namespace AgendaDemo.Repository
 {
@@ -10,5 +11,6 @@ namespace AgendaDemo.Repository
 
         public void Add(User user);
 
+        public User? ValidateUser(AuthenticationRequestBody user);
     }
 }

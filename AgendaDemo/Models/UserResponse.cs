@@ -6,5 +6,6 @@
         public string UserName { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string Password { get; set; }
     }
 }

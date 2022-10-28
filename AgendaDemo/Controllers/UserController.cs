@@ -1,6 +1,8 @@
 ﻿using AgendaDemo.Entities;
+using AgendaDemo.Helpers;
 using AgendaDemo.Models;
 using AgendaDemo.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,12 +10,13 @@ namespace AgendaDemo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
 
         private readonly IUserRepository _userRepository;
         
-        public UserController(UserRepository userRepository)
+        public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -62,6 +65,7 @@ namespace AgendaDemo.Controllers
                             BirthDate = user.BirthDate,
                             CreatedDate = user.CreatedDate,
                             Id = user.Id,
+                            Password = user.Password,
                         }
                     );
                 }
